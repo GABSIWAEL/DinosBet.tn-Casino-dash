@@ -1,8 +1,14 @@
+![Capture d'écran 2024-02-12 224333](https://github.com/GABSIWAEL/DinosBet.tn-Casino-dash/assets/149884257/3c69aec3-b3cc-4871-a617-edb5704e8489)
+![Capture d'écran 2024-02-12 224350](https://github.com/GABSIWAEL/DinosBet.tn-Casino-dash/assets/149884257/afeb6e06-5217-49f6-92c2-fea13ed58e9b)
+![Capture d'écran 2024-02-12 224415](https://github.com/GABSIWAEL/DinosBet.tn-Casino-dash/assets/149884257/7e0fea9d-8105-4a61-a6c9-73a212d4719a)
+![Capture d'écran 2024-02-12 224436](https://github.com/GABSIWAEL/DinosBet.tn-Casino-dash/assets/149884257/b1c4e6ae-cb26-4411-bf09-74c505ae93c3)
+![Capture d'écran 2024-02-12 224502](https://github.com/GABSIWAEL/DinosBet.tn-Casino-dash/assets/149884257/67974346-6e30-461c-9e65-a1ab299a176b)
+![Capture d'écran 2024-02-12 224520](https://github.com/GABSIWAEL/DinosBet.tn-Casino-dash/assets/149884257/828e0ea2-0cf6-405c-afa9-a1cf727d1adb)
+![Capture d'écran 2024-02-12 224541](https://github.com/GABSIWAEL/DinosBet.tn-Casino-dash/assets/149884257/759318ee-fb00-4691-bf6b-ab5cfb51b54b)
 
-![image](https://github.com/GABSIWAEL/Casino-Management-System/assets/149884257/1fcc9b70-9a00-42d8-bbde-82070260e96a)
-![image](https://github.com/GABSIWAEL/Casino-Management-System/assets/149884257/0b70c3f0-1d66-4fc0-897d-924ba737de0b)
+![Capture d'écran 2024-02-12 224555](https://github.com/GABSIWAEL/DinosBet.tn-Casino-dash/assets/149884257/86cb1425-0db1-4add-8057-f3665cdd5478)
+![Capture d'écran 2024-02-12 224639](https://github.com/GABSIWAEL/DinosBet.tn-Casino-dash/assets/149884257/27e0b7e4-cb8a-4f2b-8b68-aefdeffb340e)
 
-![image](https://github.com/GABSIWAEL/Casino-Management-System/assets/149884257/a9070426-6968-4caa-9356-b0e1c45f7fff)
 Casino Management System
 This project is a simple web-based casino management system built using Flask, SQLite, and HTML/CSS. It allows users to create accounts, recharge their balances, and withdraw funds. The system also maintains a log of all operations performed by users.
 
