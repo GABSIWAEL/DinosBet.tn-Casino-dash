@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+    <style>
+        body::before {
+            content: "  Une Version Demonstartive Sous Les Droits Du";
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            font-size: 40px;
+            font-weight: bold;
+            color: rgba(255, 0, 0, 0.12);
+            z-index: 1000;
+            pointer-events: none;
+            white-space: pre;
+            /* Preserve whitespace and allow line breaks */
+        }
+
+        body::after {
+            content: "     Créateur Wael Gabsi";
+            position: fixed;
+            top: 60%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            font-size: 40px;
+            font-weight: bold;
+            color: rgba(255, 0, 0, 0.12);
+            z-index: 1000;
+            pointer-events: none;
+            white-space: pre;
+            /* Preserve whitespace and allow line breaks */
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            width: 80%;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        
+        form {
+            width: 50%;
+            margin: 0 auto;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            cursor: pointer;
+        }
+        
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        
+        p.error {
+            color: #ff0000;
+            text-align: center;
+        }
+        
+</style>
+</head>
+<body>
+    <h2>Admin Login</h2>
+    {% if error %}
+    <p>{{ error }}</p>
+    {% endif %}
+    <form action="/admin/login" method="post">
+        <label for="username">Username:</label><br>
+        <input type="text" id="username" name="username"><br>
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password"><br><br>
+        <input type="submit" value="Login">
+    </form>
+</body>
+</html>

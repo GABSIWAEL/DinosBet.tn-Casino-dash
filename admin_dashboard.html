@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <style>
+        body::before {
+            content: "  Une Version Demonstartive Sous Les Droits Du";
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            font-size: 40px;
+            font-weight: bold;
+            color: rgba(255, 0, 0, 0.12);
+            z-index: 1000;
+            pointer-events: none;
+            white-space: pre;
+            /* Preserve whitespace and allow line breaks */
+        }
+
+        body::after {
+            content: "     Créateur Wael Gabsi";
+            position: fixed;
+            top: 60%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            font-size: 40px;
+            font-weight: bold;
+            color: rgba(255, 0, 0, 0.12);
+            z-index: 1000;
+            pointer-events: none;
+            white-space: pre;
+            /* Preserve whitespace and allow line breaks */
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .container h1, .container h2 {
+            color: #333;
+            margin-top: 0;
+        }
+
+        .container h2 {
+            margin-top: 30px;
+        }
+
+        .container ul {
+            list-style-type: none;
+            padding: 0;
+            margin-top: 10px;
+        }
+
+        .container li {
+            margin-bottom: 10px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+        }
+
+        .container p {
+            margin-top: 10px;
+            color: #333;
+        }
+
+        .container a {
+            display: block;
+            margin-top: 30px;
+            text-decoration: none;
+            color: #007bff;
+            text-align: center;
+        }
+
+        .container a:hover {
+            text-decoration: underline;
+        }
+
+        .create-client-container {
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 30px;
+        }
+
+        .create-client-container form {
+            text-align: left;
+        }
+
+        .create-client-container label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .create-client-container input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .create-client-container input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .create-client-container input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome, {{ session.admin }}!</h1>
+        
+        <h2>Clients List Tables:</h2>
+        <ul>
+            {% for client_table in client_tables %}
+                <li>{{ client_table[0] }}</li>
+            {% endfor %}
+        </ul>
+
+        <h2>Most Clients Balance:</h2>
+        {% if most_balance_client %}
+            <p>Client Name: {{ most_balance_client[0] }}</p>
+            <p>Balance: {{ most_balance_client[1] }}</p>
+        {% else %}
+            <p>No clients found.</p>
+        {% endif %}
+
+        <h2>Total Clients Balances:</h2>
+        <p>{{ total_balance }}</p>
+    </div>
+
+    <div class="container create-client-container">
+        <h2>Create Client:</h2>
+        <form action="/admin/create_client" method="post">
+            <label for="client_name">Client Name:</label><br>
+            <input type="text" id="client_name" name="client_name"><br>
+            <label for="initial_balance">Initial Balance:</label><br>
+            <input type="text" id="initial_balance" name="initial_balance"><br><br>
+            <input type="submit" value="Create Client">
+        </form>
+    </div>
+    <div class="container">
+        <h2>Withdraw from Client:</h2>
+        <form action="/admin/withdraw" method="post">
+            <label for="client_name_withdraw">Client Name:</label><br>
+            <input type="text" id="client_name_withdraw" name="client_name_withdraw"><br>
+            <label for="withdraw_amount">Withdraw Amount:</label><br>
+            <input type="text" id="withdraw_amount" name="withdraw_amount"><br><br>
+            <input type="submit" value="Withdraw">
+        </form>
+    </div>
+    
+    <div class="container">
+        <h2>Recharge Client:</h2>
+        <form action="/admin/recharge" method="post">
+            <label for="client_name_recharge">Client Name:</label><br>
+            <input type="text" id="client_name_recharge" name="client_name_recharge"><br>
+            <label for="recharge_amount">Recharge Amount:</label><br>
+            <input type="text" id="recharge_amount" name="recharge_amount"><br><br>
+            <input type="submit" value="Recharge">
+        </form>
+    </div>
+    
+
+    <div class="container">
+        <a href="/admin/logout">Logout</a>
+    </div>
+</body>
+</html>

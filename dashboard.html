@@ -1,0 +1,226 @@
+<!-- dashboard.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casino Dashboard</title>
+
+    <style>
+        body::before {
+            content: "  Une Version Demonstartive Sous Les Droits Du";
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            font-size: 40px;
+            font-weight: bold;
+            color: rgba(255, 0, 0, 0.12);
+            z-index: 1000;
+            pointer-events: none;
+            white-space: pre;
+            /* Preserve whitespace and allow line breaks */
+        }
+
+        body::after {
+            content: "     Créateur Wael Gabsi";
+            position: fixed;
+            top: 60%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            font-size: 40px;
+            font-weight: bold;
+            color: rgba(255, 0, 0, 0.12);
+            z-index: 1000;
+            pointer-events: none;
+            white-space: pre;
+            /* Preserve whitespace and allow line breaks */
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .operation {
+            background-color: #f9f9f9;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .operation h2 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            color: #444;
+        }
+
+        .operation label {
+            display: inline-block;
+            width: 120px;
+            margin-right: 10px;
+            text-align: right;
+            color: #666;
+        }
+
+        .operation input,
+        .operation button {
+            width: 200px;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            transition: border-color 0.3s;
+        }
+
+        .operation input:focus {
+            border-color: #4caf50;
+            outline: none;
+        }
+
+        .operation button {
+
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .operation button:hover {
+            background-color: #45a049;
+        }
+
+        a {
+            display: block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #007bff;
+            text-align: center;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+           /* Your CSS styles here */
+           .navbar {
+            background-color: #333;
+            overflow: hidden;
+        }
+
+        .navbar a {
+            float: left;
+            display: block;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+        }
+
+        .navbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .logout-button {
+            background-color: #f44336;
+            color: white;
+            padding: 10px 20px;
+            float: right;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .logout-button:hover {
+            background-color: #d32f2f;
+        }
+
+        .logout-button:focus {
+            outline: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="navbar">
+        <a href="">Home</a>
+        <a href="">News</a>
+        <a href="">Contact</a>
+        <a href="">Current Balance: ${{ current_balance }}</a>
+       
+        <!-- Logout button -->
+        <form class="logout" action="/logout" method="post">
+            <button type="submit" class="logout-button">Logout</button>
+        </form>
+    </div>
+    <div class="container">
+        <h1>Welcome, {{ session.username }} , Your  Balance: ${{ current_balance }}</h1>
+        
+        <div class="operation">
+            <h2>Create User</h2>
+            <form id="createUserForm" action="/create_user" method="POST">
+                <label for="amount">Enter amount:</label>
+                <input type="number" id="amount" name="amount" required>
+                <button type="submit">Create User</button>
+            </form>
+        </div>
+        <div class="operation">
+            <h2>Recharge Account</h2>
+            <form action="/recharge" method="POST">
+                <label for="recharge_number">Account Number:</label>
+                <input type="text" id="recharge_number" name="number" required>
+                <label for="recharge_amount">Enter amount:</label>
+                <input type="number" id="recharge_amount" name="amount" required>
+                <button type="submit">Recharge</button>
+            </form>
+        </div>
+        <div class="operation">
+            <h2>Withdraw Amount</h2>
+            <form action="/withdraw" method="POST">
+                <label for="withdraw_number">Account Number:</label>
+                <input type="text" id="withdraw_number" name="number" required>
+                <label for="withdraw_amount">Enter amount:</label>
+                <input type="number" id="withdraw_amount" name="amount" required>
+                <button type="submit">Withdraw</button>
+            </form>
+
+        </div>
+        <div id="messageDiv" class="operation">
+            <h2>Create User</h2>
+            {% if message1 %}
+            <p>{{ message1 }}</p>
+            {% endif %}
+
+        </div>
+        <div class="operation">
+            <h2>Messages</h2>
+            {% if message %}
+            <p>{{ message }}</p>
+            {% endif %}
+
+        </div>
+        <a href="/operations">Go to Index</a>
+    </div>
+</body>
+
+</html>
